@@ -21,15 +21,15 @@ const Carousel:React.FC<Props>
   return (
     <div className='max-sm:w-screen'>
       <div className='relative flex'>
-        <div className='flex overflow-hidden snap-x snap-mandatory'>
+        <div className='overflow-hidden snap-x snap-mandatory'>
           {/* {mediaFeeds.map((i:any, key:number) => 
             <div className=' h-96 bg-zinc-100 snap-center' key={key} style={{minWidth: "100vw"}}>
               <img src={i.mediaSrc} alt={i.mediaSrc} className='h-full w-full'/>
               
             </div>
           )} */}
-          <div className=' h-96 bg-zinc-100 snap-center' key={count} style={{minWidth: "100vw"}}>
-            <img src={feeds[count]["mediaSrc"]} alt={feeds[count]["mediaSrc"]} className='h-full w-full object-cover'/>
+          <div className=' h-96 bg-zinc-100 snap-center max-sm:min-w-screen' key={count} style={{minWidth: "100vw"}}>
+            <img src={feeds[count]["mediaSrc"]} alt={feeds[count]["mediaSrc"]} className='h-full w-full sm:h-full sm:w-1/2 m-auto object-cover sm:object-cover'/>
           </div>
         </div>
         <div className='absolute bottom-1/2  flex justify-between w-full'>
