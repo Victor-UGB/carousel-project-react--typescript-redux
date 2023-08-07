@@ -28,7 +28,7 @@ const Feed:React.FC<Props> = (feed) => {
 
     return (
         <div>
-            <div className='text-zinc-400 font-medium my-2'>
+            <div className='text-zinc-400 font-medium my-2 sm:w-1/2 m-auto'>
                 <div className="p-2">
                     <FeedTitle
                         profileImg={feed.feed.profileImg}

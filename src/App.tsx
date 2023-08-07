@@ -100,7 +100,7 @@ function App() {
   ])
 
   return (
-    <div className="App ">
+    <div className="App  sm:w-1/2 m-auto ">
       {/* <div className="App-header bg-zinc-900">
         <div>Feeds</div>
         <Feed/>
@@ -108,7 +108,7 @@ function App() {
         <Feed/>
         <Feed/>
       </div> */}
-      <div className="App-header bg-zinc-900">
+      <div className="App-header bg-zinc-950">
         <div>Feeds</div>
         {feeds.map((feed:any, index:number) => 
           <div key={index}>

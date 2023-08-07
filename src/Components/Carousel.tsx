@@ -19,9 +19,9 @@ const Carousel:React.FC<Props>
   }
 
   return (
-    <div className='w-screen'>
+    <div className='max-sm:w-screen'>
       <div className='relative flex'>
-        <div className='flex overflow-scroll snap-x snap-mandatory'>
+        <div className='flex overflow-hidden snap-x snap-mandatory'>
           {/* {mediaFeeds.map((i:any, key:number) => 
             <div className=' h-96 bg-zinc-100 snap-center' key={key} style={{minWidth: "100vw"}}>
               <img src={i.mediaSrc} alt={i.mediaSrc} className='h-full w-full'/>
