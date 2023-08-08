@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {AiOutlineHeart, AiFillHeart} from"react-icons/ai"
 import {PiChatTeardrop, PiShareFatLight} from 'react-icons/pi'
 import {BsBookmark, BsBookmarkFill} from 'react-icons/bs'
+import {useData} from '../FeedContext'
 
 interface Props {
     like: boolean,
@@ -9,7 +10,7 @@ interface Props {
     comment: boolean,
     bookmark: boolean,
     act: string,
-    handleAction : (action: string) => void
+    handleAction : (action: string) => void;
 }
 
 const Actions:React.FC<Props> = ({...Props}) => {
@@ -21,10 +22,25 @@ const Actions:React.FC<Props> = ({...Props}) => {
         bookmark: false
     })
 
+    const {data, setData } = useData()
+
+    const handleLike = () => {
+        console.log(data.feedDetails)
+        // const updatedData = {...data, likes: data.feedDetails.likes + 1}
+        const updatedData = {...data.feedDetails, likes: !actions.like? data.feedDetails.likes + 1: data.feedDetails.likes - 1}
+        setData((prevData) =>  {
+            prevData.feedDetails= updatedData
+            return prevData
+        })
+        // console.log(data)
+        console.log(updatedData)
+    }
+
     const handleAct = (action:string) => {
         if (action === "like") {
             console.log(`${action} called`)
             setActions({...actions, like:!actions.like})
+            handleLike()
         }else if(action === "bookmark"){
             console.log(`${action} called`)
             setActions({...actions, bookmark:!actions.bookmark})
@@ -46,6 +62,7 @@ const Actions:React.FC<Props> = ({...Props}) => {
                 <div className='flex text-lg'>
                     <div onClick={() => handleAct("like")}>
                         { actions.like? <AiFillHeart className='animate-scale-up-down h-8 w-8 mx-1 text-red-600'/>: <AiOutlineHeart className='h-8 w-8 mx-1'/>}
+                        
                     </div>
                     <div onClick={() => Props.handleAction(Props.act)}>
                         <PiChatTeardrop className='h-8 w-8 mx-1'/>
@@ -60,6 +77,7 @@ const Actions:React.FC<Props> = ({...Props}) => {
                     </div>
                 </div>
             </div>
+            <div className='px-2 text-sm text-left font-medium py-1 pb-0 text-zinc-200'>{data.feedDetails['likes']} likes</div>
         </div>
 
     )

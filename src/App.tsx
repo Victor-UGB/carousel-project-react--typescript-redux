@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useReducer, useContext} from 'react';
+import {FeedProvider} from './FeedContext'
 import './App.css';
 import Feed from './Components/Feed';
 
@@ -46,8 +47,8 @@ function App() {
         },
       ],
       feedDetails: {
-        caption: "The life of a javascript developer",
-        likes: 2200,
+        caption: "The life of an AI model trainer",
+        likes: 1357,
         username: "ai_trainer",
       } 
     },
@@ -69,8 +70,8 @@ function App() {
         },
       ],
       feedDetails: {
-        caption: "The life of a javascript developer",
-        likes: 2200,
+        caption: "The life of a java developer",
+        likes: 3430,
         username: "javas_firstborn",
       }
     },
@@ -92,12 +93,13 @@ function App() {
         },
       ],
       feedDetails: {
-        caption: "The life of a javascript developer",
-        likes: 2200,
+        caption: "The life of a python developer",
+        likes: 4348,
         username: "python_maestro",
       }
     }
   ])
+
 
   return (
     <div className="App  sm:w-1/2 m-auto ">
