@@ -2,6 +2,7 @@ import React, {useState, useReducer, useContext} from 'react';
 import {FeedProvider} from './FeedContext'
 import './App.css';
 import Feed from './Components/Feed';
+import ShareModal from './Components/ShareModal';
 
 function App() {
 
@@ -100,7 +101,30 @@ function App() {
     }
   ])
 
+  const shareModal = () => {
+        return(
+        <div className='fixed h-full w-full' 
+            id='modal-container'
+          // style={{backgroundColor: "rgb(0 0 0 / 0.25)",}}
+          >
+          <div className='h-full w-full animate-step-down'  onClick={() => displayShareModal()} style={{backgroundColor: "rgb(0 0 0 / 0.7)",}}></div>
+          <ShareModal/>
+        </div>
+        )
+    }
 
+    const [shareModalCalled, setShareModalCalled] = useState(false)
+
+    const displayShareModal = () => {
+      if(shareModalCalled === true){
+        setShareModalCalled(false)
+        document.body.style.overflow = "scroll"
+      }else{
+        setShareModalCalled(true)
+        document.body.style.overflow = "hidden"
+      }
+    }
+  
   return (
     <div className="App  sm:w-1/2 m-auto ">
       {/* <div className="App-header bg-zinc-900">
@@ -116,9 +140,11 @@ function App() {
           <div key={index}>
             <Feed
               feed = {feeds[index]}
+              shareModalCB={displayShareModal}
             />
           </div>
         )}
+        {shareModalCalled? shareModal() : ""}
       </div>
     </div>
   );

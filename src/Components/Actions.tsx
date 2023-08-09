@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {AiOutlineHeart, AiFillHeart} from"react-icons/ai"
 import {PiChatTeardrop, PiShareFatLight} from 'react-icons/pi'
-import {BsBookmark, BsBookmarkFill} from 'react-icons/bs'
+import {BsBookmark, BsBookmarkFill, BsSend} from 'react-icons/bs'
 import {useData} from '../FeedContext'
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
     bookmark: boolean,
     act: string,
     handleAction : (action: string) => void;
+    shareModalCallback: () => void;
 }
 
 const Actions:React.FC<Props> = ({...Props}) => {
@@ -52,6 +53,8 @@ const Actions:React.FC<Props> = ({...Props}) => {
         else{
             console.log(`${action} called`)
             setActions({...actions, share:!actions.share})
+            Props.shareModalCallback()
+
         }
         Props.handleAction("hey")
     }
@@ -67,8 +70,8 @@ const Actions:React.FC<Props> = ({...Props}) => {
                     <div onClick={() => Props.handleAction(Props.act)}>
                         <PiChatTeardrop className='h-8 w-8 mx-1'/>
                     </div>
-                    <div>
-                        <PiShareFatLight className='h-8 w-8 mx-1'/>
+                    <div onClick={() => handleAct("share")}>
+                        <BsSend className='h-7 w-7 mx-1'/>
                     </div>
                 </div>
                 <div>

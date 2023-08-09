@@ -2,14 +2,16 @@ import React, {useState, useEffect} from 'react'
 import FeedTitle from './FeedTitle'
 import Carousel from './Carousel'
 import FeedDetails from './FeedDetails'
+import ShareModal from './ShareModal'
 import Actions from './Actions'
 import {FeedProvider, FeedData, useData} from '../FeedContext'
 
 interface Props {
-    feed: any
+    feed: any;
+    shareModalCB : () => void;
 }
 
-const Feed:React.FC<Props> = (feed) => {
+const Feed:React.FC<Props> = ({...Props}) => {
     const [mediaFeeds, setMediaFeeds] = useState<any>([
         {
             mediaSrc: "https://images.unsplash.com/photo-1690953283588-4a72c032c9c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=300&q=60"
@@ -27,7 +29,7 @@ const Feed:React.FC<Props> = (feed) => {
 
     const [profileImg, setProfileImg] = useState('https://images.unsplash.com/photo-1492681290082-e932832941e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=300&q=60')
 
-    const [feedDetails, setFeedDetails] = useState<FeedData>(feed.feed)
+    const [feedDetails, setFeedDetails] = useState<FeedData>(Props.feed)
     
     const setContextValue = () => {
         try {
@@ -40,24 +42,28 @@ const Feed:React.FC<Props> = (feed) => {
         }
     }
 
+    const shareModalCall = () => {
+        Props.shareModalCB()
+    }
+
     // On component mount set feed property value to FeedContext
     useEffect(() => {
-        setFeedDetails(feed.feed)
+        setFeedDetails(Props.feed)
     }, [])
     
-
+    
     return (
         <FeedProvider initialValue={feedDetails}>
         <div>
             <div className='text-zinc-400 font-medium my-2 sm:w-1/2 m-auto'>
                 <div className="p-2">
                     <FeedTitle
-                        profileImg={feed.feed.profileImg}
-                        username = { feed.feed.username }
+                        profileImg={Props.feed.profileImg}
+                        username = { Props.feed.username }
                     />
                 </div>
                 <Carousel 
-                    feeds={feed.feed.mediaFeeds}
+                    feeds={Props.feed.mediaFeeds}
                 />
                 <div className='p-2'>
                 <Actions
@@ -67,12 +73,14 @@ const Feed:React.FC<Props> = (feed) => {
                     bookmark = {false}
                     handleAction={() => console.log("hey")}
                     act='like'
+                    shareModalCallback={shareModalCall}
                 />
                 <FeedDetails
-                    feedDetails={feed.feed.feedDetails}
+                    feedDetails={Props.feed.feedDetails}
                 />
                 </div>
             </div>
+
         </div>
         </FeedProvider>
     )
