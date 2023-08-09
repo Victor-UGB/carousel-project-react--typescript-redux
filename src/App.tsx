@@ -107,7 +107,7 @@ function App() {
             id='modal-container'
           // style={{backgroundColor: "rgb(0 0 0 / 0.25)",}}
           >
-          <div className='h-full w-full animate-step-down'  onClick={() => displayShareModal()} style={{backgroundColor: "rgb(0 0 0 / 0.7)",}}></div>
+          <div className='h-full w-full'  onClick={() => displayShareModal()} style={{backgroundColor: "rgb(0 0 0 / 0.7)",}}></div>
           <ShareModal/>
         </div>
         )

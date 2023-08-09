@@ -8,7 +8,7 @@ module.exports = {
       animation: {
         "scale-up-down": 'scaleUpDown 1s ease-in-out',
         "pin-down": 'pinDown .8s ease-in-out',
-        'step-up' : 'stepUp .5s ease-out',
+        'step-up' : 'stepUp .4s ease-out',
         'step-down': 'stepDown .8s ease-in-out',
       },
       keyframes : {
