@@ -135,7 +135,7 @@ function App() {
         <Feed/>
       </div> */}
       <div className="App-header bg-zinc-950">
-        <div>Feeds</div>
+        <div className='font-bold py-2'>Feeds</div>
         {feeds.map((feed:any, index:number) => 
           <div key={index}>
             <Feed
