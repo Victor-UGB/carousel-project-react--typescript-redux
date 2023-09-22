@@ -43,19 +43,20 @@ const ShareModal = () => {
             ) : ""}
             <div className='bg-zinc-300 w-10 h-1 rounded m-auto mb-7 bg-gradient-to-br'></div>
             <div className='grid grid-cols-3 gap-3 mt-6 mb-2 justify-around text-zinc-800 font-normal text-sm w-full '>
-                <div className='bg-zinc-200 px-5 gap-1 py-4 rounded-2xl flex flex-col items-center'>
+                <div className='bg-zinc-200 px-5 gap-1 py-4 rounded-2xl flex flex-col items-center hover:bg-zinc-100 hover:drop-shadow-lg hover:text-zinc-800'>
                     <div><AiOutlineLink className='h-7 w-7'/></div>
                     <div onClick={() => {
                         navigator.clipboard.writeText(textToCopy);
                         console.log('copied to clipboard');
                         alertCallback()
-                        }}>Link</div>
+                        }}
+                        >Link</div>
                 </div>
-                <div className='bg-zinc-200 px-5 gap-1 py-4 rounded-2xl flex flex-col items-center'>
+                <div className='bg-zinc-200 px-5 gap-1 py-4 rounded-2xl flex flex-col items-center hover:bg-zinc-100 hover:drop-shadow-lg hover:text-zinc-800'>
                     <div><MdOutlineWhatsapp className='h-7 w-7'/></div>
                     <div onClick={() => share(textToCopy)}>Whatsapp</div>
                 </div>
-                <div className='bg-zinc-200 px-5 gap-1 py-4 rounded-2xl flex flex-col items-center'>
+                <div className='bg-zinc-200 px-5 gap-1 py-4 rounded-2xl flex flex-col items-center hover:bg-zinc-100 hover:drop-shadow-lg hover:text-zinc-800'>
                     <div><TbSquareRoundedLetterX className='h-7 w-7'/></div>
                     <div className='truncate'>X fka Twitter</div>
                 </div>
