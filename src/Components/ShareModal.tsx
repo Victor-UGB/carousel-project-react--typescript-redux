@@ -28,8 +28,9 @@ const ShareModal = () => {
             }
         }else if (network === "x"){
             console.log("x")
+            const url = "http://google.com"
             try{
-                window.open(`twitter://share?text=${encodeURIComponent(textToCopy)}`)
+                window.open(`twitter://share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(textToCopy)}`)
             }catch(error){
                 console.log(error)
             }
