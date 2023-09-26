@@ -22,14 +22,14 @@ const ShareModal = () => {
         if (network === "whatsapp"){
             console.log("whatsapp")
             try{
-                window.open(`whatsapp://send?text=${textToCopy}`)
+                window.open(`whatsapp://send?text=${encodeURIComponent(textToCopy)}`)
             }catch(error){
                 console.log(error)
             }
         }else if (network === "x"){
             console.log("x")
             try{
-                window.open(`x://send?text=${textToCopy}`)
+                window.open(`twitter://share?text=${encodeURIComponent(textToCopy)}`)
             }catch(error){
                 console.log(error)
             }
