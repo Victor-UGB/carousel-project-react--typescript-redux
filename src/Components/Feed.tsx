@@ -9,6 +9,7 @@ import {FeedProvider, FeedData, useData} from '../FeedContext'
 interface Props {
     feed: any;
     shareModalCB : () => void;
+    commentModalCall : () => void
 }
 
 const Feed:React.FC<Props> = ({...Props}) => {
@@ -46,6 +47,10 @@ const Feed:React.FC<Props> = ({...Props}) => {
         Props.shareModalCB()
     }
 
+    const commentModalCall = () => {
+        Props.commentModalCall()
+    }
+
     // On component mount set feed property value to FeedContext
     useEffect(() => {
         setFeedDetails(Props.feed)
@@ -74,6 +79,7 @@ const Feed:React.FC<Props> = ({...Props}) => {
                     handleAction={() => console.log("hey")}
                     act='like'
                     shareModalCallback={shareModalCall}
+                    commentModalCallback={commentModalCall}
                 />
                 <FeedDetails
                     feedDetails={Props.feed.feedDetails}

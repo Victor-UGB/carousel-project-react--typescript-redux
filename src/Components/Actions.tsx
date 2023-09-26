@@ -12,6 +12,7 @@ interface Props {
     act: string,
     handleAction : (action: string) => void;
     shareModalCallback: () => void;
+    commentModalCallback: () => void
 }
 
 const Actions:React.FC<Props> = ({...Props}) => {
@@ -49,6 +50,7 @@ const Actions:React.FC<Props> = ({...Props}) => {
         else if(action === "comment"){
             console.log(`${action} called`)
             setActions({...actions, comment:!actions.comment})
+            Props.commentModalCallback()
         }
         else{
             console.log(`${action} called`)
@@ -67,7 +69,7 @@ const Actions:React.FC<Props> = ({...Props}) => {
                         { actions.like? <AiFillHeart className='animate-scale-up-down h-8 w-8 mx-1 text-red-600'/>: <AiOutlineHeart className='h-8 w-8 mx-1'/>}
                         
                     </div>
-                    <div onClick={() => Props.handleAction(Props.act)}>
+                    <div onClick={() => handleAct("comment")}>
                         <PiChatTeardrop className='h-8 w-8 mx-1'/>
                     </div>
                     <div onClick={() => handleAct("share")}>

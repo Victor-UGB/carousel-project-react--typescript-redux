@@ -114,6 +114,7 @@ function App() {
     }
 
     const [shareModalCalled, setShareModalCalled] = useState(false)
+    const [commentModalCalled, setCommentModalCalled] = useState(false)
 
     const displayShareModal = () => {
       if(shareModalCalled === true){
@@ -123,6 +124,11 @@ function App() {
         setShareModalCalled(true)
         document.body.style.overflow = "hidden"
       }
+    }
+
+    const displayCommentModal = () => {
+      setCommentModalCalled(true)
+      console.log(commentModalCalled)
     }
   
   return (
@@ -141,6 +147,7 @@ function App() {
             <Feed
               feed = {feeds[index]}
               shareModalCB={displayShareModal}
+              commentModalCall={displayCommentModal}
             />
           </div>
         )}
