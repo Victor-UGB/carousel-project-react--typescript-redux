@@ -5,6 +5,7 @@ import FeedDetails from './FeedDetails'
 import ShareModal from './ShareModal'
 import Actions from './Actions'
 import {FeedProvider, FeedData, useData} from '../FeedContext'
+import CommentModal from './CommentModal'
 
 interface Props {
     feed: any;
@@ -32,6 +33,7 @@ const Feed:React.FC<Props> = ({...Props}) => {
 
     const [feedDetails, setFeedDetails] = useState<FeedData>(Props.feed)
     
+    const [commentModalCalled, setCommentModalCalled] = useState(false)
     const setContextValue = () => {
         try {
             const value = feedDetails
@@ -48,7 +50,8 @@ const Feed:React.FC<Props> = ({...Props}) => {
     }
 
     const commentModalCall = () => {
-        Props.commentModalCall()
+        console.log(commentModalCalled)
+        setCommentModalCalled(!commentModalCalled)
     }
 
     // On component mount set feed property value to FeedContext
@@ -86,7 +89,16 @@ const Feed:React.FC<Props> = ({...Props}) => {
                 />
                 </div>
             </div>
-
+            { commentModalCalled?
+            <div className='fixed h-full w-full bg-zinc-900 top-0 animate-step-up'>
+                <CommentModal
+                    feedTitle={Props.feed.username}
+                    feedProfilePic={Props.feed.profileImg}
+                    feedDetailCaption={Props.feed.feedDetails.caption}
+                    closeCommentModalCallback={commentModalCall}
+                />
+            </div>
+            : ""}
         </div>
         </FeedProvider>
     )
