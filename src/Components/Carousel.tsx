@@ -19,7 +19,7 @@ const Carousel:React.FC<Props>
   }
 
   return (
-    <div className='max-sm:w-screen'>
+    <div className='max-sm:w-screen relative'>
       <div className='relative flex'>
         <div className='overflow-hidden snap-x snap-mandatory'>
           {/* {mediaFeeds.map((i:any, key:number) => 

@@ -96,7 +96,8 @@ const Feed:React.FC<Props> = ({...Props}) => {
                 </div>
             </div>
             { commentModalCalled?
-            <div className='fixed min-h-screen w-full bg-zinc-900 top-0 bottom-0 animate-step-up'>
+
+            <div className='fixed min-h-screen w-full top-0 bottom-0 animate-step-up z-10'>
                 <CommentModal
                     feedTitle={Props.feed.username}
                     feedProfilePic={Props.feed.profileImg}
