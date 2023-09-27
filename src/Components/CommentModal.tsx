@@ -9,7 +9,7 @@ interface Props{
 
 const CommentModal:React.FC<Props> = ({...Props}) => {
   return (
-    <div className='h-full w-full top-0 absolute'>
+    <div className='h-full w-full top-0 absolute bg-zinc-900'>
         <div className='flex justify-between p-3 py-5 text-xs font-bold'>
             <button
                 className='px-4 py-1 rounded-full bg-zinc-400'

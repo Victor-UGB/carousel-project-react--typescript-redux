@@ -10,7 +10,6 @@ import CommentModal from './CommentModal'
 interface Props {
     feed: any;
     shareModalCB : () => void;
-    commentModalCall : () => void
 }
 
 const Feed:React.FC<Props> = ({...Props}) => {
@@ -51,7 +50,14 @@ const Feed:React.FC<Props> = ({...Props}) => {
 
     const commentModalCall = () => {
         console.log(commentModalCalled)
-        setCommentModalCalled(!commentModalCalled)
+        if(commentModalCalled === true){
+            setCommentModalCalled(false)
+            document.body.style.overflow = "scroll"
+        }else{
+            setCommentModalCalled(true)
+            document.body.style.overflow = "hidden"
+        }
+        
     }
 
     // On component mount set feed property value to FeedContext
@@ -90,7 +96,7 @@ const Feed:React.FC<Props> = ({...Props}) => {
                 </div>
             </div>
             { commentModalCalled?
-            <div className='fixed h-full w-full bg-zinc-900 top-0 animate-step-up'>
+            <div className='fixed min-h-screen w-full bg-zinc-900 top-0 bottom-0 animate-step-up'>
                 <CommentModal
                     feedTitle={Props.feed.username}
                     feedProfilePic={Props.feed.profileImg}

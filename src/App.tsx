@@ -126,11 +126,6 @@ function App() {
       }
     }
 
-    const displayCommentModal = () => {
-      setCommentModalCalled(true)
-      console.log(commentModalCalled)
-    }
-  
   return (
     <div className="App  sm:w-1/2 m-auto ">
       {/* <div className="App-header bg-zinc-900">
@@ -147,7 +142,6 @@ function App() {
             <Feed
               feed = {feeds[index]}
               shareModalCB={displayShareModal}
-              commentModalCall={displayCommentModal}
             />
           </div>
         )}
