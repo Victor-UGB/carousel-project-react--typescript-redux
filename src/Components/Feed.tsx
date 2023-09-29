@@ -8,6 +8,7 @@ import {FeedProvider, FeedData, useData} from '../FeedContext'
 import CommentModal from './CommentModal'
 
 interface Props {
+    id: number
     feed: any;
     shareModalCB : () => void;
 }
@@ -43,6 +44,8 @@ const Feed:React.FC<Props> = ({...Props}) => {
             console.error('Error:', error)
         }
     }
+
+    const id = Props.id
 
     const shareModalCall = () => {
         Props.shareModalCB()
@@ -99,6 +102,7 @@ const Feed:React.FC<Props> = ({...Props}) => {
 
             <div className='fixed min-h-screen w-full top-0 bottom-0 animate-step-up z-10'>
                 <CommentModal
+                    id = {id}
                     feedTitle={Props.feed.username}
                     feedProfilePic={Props.feed.profileImg}
                     feedDetailCaption={Props.feed.feedDetails.caption}

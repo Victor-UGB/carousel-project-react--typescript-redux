@@ -8,6 +8,7 @@ function App() {
 
   const [feeds, setFeeds] = useState<any>([
     {
+      id: 0,
       username: "victor_ugb",
       profileImg: 'https://images.unsplash.com/photo-1492681290082-e932832941e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=300&q=60',
       mediaFeeds : [
@@ -31,6 +32,7 @@ function App() {
       }
     },
     {
+      id: 1,
       username: "ai_trainer",
       profileImg: 'https://images.unsplash.com/photo-1492681290082-e932832941e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=300&q=60',
       mediaFeeds : [
@@ -54,6 +56,7 @@ function App() {
       } 
     },
     {
+      id:2,
       username: "javas_firstborn",
       profileImg: 'https://images.unsplash.com/photo-1492681290082-e932832941e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=300&q=60',
       mediaFeeds : [
@@ -77,6 +80,7 @@ function App() {
       }
     },
     {
+      id:3,
       username: "python_maestro",
       profileImg: 'https://images.unsplash.com/photo-1492681290082-e932832941e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=300&q=60',
       mediaFeeds : [
@@ -140,6 +144,7 @@ function App() {
         {feeds.map((feed:any, index:number) => 
           <div key={index}>
             <Feed
+              id = {index}
               feed = {feeds[index]}
               shareModalCB={displayShareModal}
             />

@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux/es/exports'
+import { addComment } from '../Redux/actions'
+import {v4 as uuidv4} from 'uuid'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
+
+
 
 interface Props{
+    id: number
     feedTitle: string;
     feedProfilePic: string;
     feedDetailCaption: string;
@@ -8,6 +15,19 @@ interface Props{
 }
 
 const CommentModal:React.FC<Props> = ({...Props}) => {
+    const [text, setText] = useState("")
+    const dispatch = useDispatch()
+
+    const handleOnSubmit = (event:any) => {
+        console.log(text)
+        // event.preventDefault()
+        dispatch(addComment({text: text, id:uuidv4(), postId: Props.id}))
+        setText("")
+    }
+    const comments =useSelector((state:any) => state.comments.filter((x:any) => x.postId === Props.id))
+    console.log(comments)
+
+
   return (
     <div className='h-full w-full top-0 absolute bg-zinc-900'>
         <div className='flex justify-between p-3 py-5 text-xs font-bold'>
@@ -19,6 +39,7 @@ const CommentModal:React.FC<Props> = ({...Props}) => {
             </button>
             <button
                 className='px-4 py-1 rounded-full bg-blue-600'
+                onClick={() => handleOnSubmit("")}
                 >
                 Post
             </button>
@@ -37,9 +58,22 @@ const CommentModal:React.FC<Props> = ({...Props}) => {
         </div>
         <div className='p-3 w-full'>
             <form className='w-full'>
-                <textarea className='w-full rounded-xl bg-zinc-700 font-semibold p-2 text-sm' placeholder='Post your comment'/>
+                <textarea 
+                onChange={(event) => setText(event.target.value)}
+                value={text}
+                className='w-full rounded-xl bg-zinc-700 font-semibold p-2 text-sm' placeholder='Post your comment'/>
                 
             </form>
+        </div>
+        <div className='text-left text-sm font-extrabold text-zinc-400 px-6'>Comments</div>
+        <div className='p-4 flex flex-col-reverse gap-2'>
+            {comments.map((comment:any) => {
+                return(
+                <div className='text-left p-2 text-xs bg-zinc-800 rounded '>
+                    <div className='px-2'>{comment.text}</div>
+                </div>
+                )
+            })}
         </div>
     </div>
   )
