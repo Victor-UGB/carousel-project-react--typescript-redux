@@ -34,6 +34,7 @@ const Feed:React.FC<Props> = ({...Props}) => {
     const [feedDetails, setFeedDetails] = useState<FeedData>(Props.feed)
     
     const [commentModalCalled, setCommentModalCalled] = useState(false)
+    
     const setContextValue = () => {
         try {
             const value = feedDetails
@@ -95,6 +96,7 @@ const Feed:React.FC<Props> = ({...Props}) => {
                 />
                 <FeedDetails
                     feedDetails={Props.feed.feedDetails}
+                    commentModalCallback={commentModalCall}
                 />
                 </div>
             </div>

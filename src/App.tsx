@@ -29,6 +29,7 @@ function App() {
         caption: "The life of a javascript developer",
         likes: 2200,
         username: "victor_ugb",
+        commentCount: 21
       }
     },
     {
@@ -53,6 +54,7 @@ function App() {
         caption: "The life of an AI model trainer",
         likes: 1357,
         username: "ai_trainer",
+        commentCount: 60
       } 
     },
     {
@@ -77,6 +79,7 @@ function App() {
         caption: "The life of a java developer",
         likes: 3430,
         username: "javas_firstborn",
+        commentCount: 403
       }
     },
     {
@@ -101,6 +104,7 @@ function App() {
         caption: "The life of a python developer",
         likes: 4348,
         username: "python_maestro",
+        commentCount: 215
       }
     }
   ])

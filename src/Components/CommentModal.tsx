@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux/es/exports'
 import { addComment } from '../Redux/actions'
 import {v4 as uuidv4} from 'uuid'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
+import { useData } from '../FeedContext'
 
 
 
@@ -17,12 +18,19 @@ interface Props{
 const CommentModal:React.FC<Props> = ({...Props}) => {
     const [text, setText] = useState("")
     const dispatch = useDispatch()
+    const {data, setData} = useData()
+    console.log(data)
 
     const handleOnSubmit = (event:any) => {
         console.log(text)
         // event.preventDefault()
         dispatch(addComment({text: text, id:uuidv4(), postId: Props.id}))
         setText("")
+        const updatedData = {...data.feedDetails, commentCount: data.feedDetails.commentCount + 1}
+        setData((prevData) => {
+            prevData.feedDetails = updatedData
+            return prevData
+        })
     }
     const comments =useSelector((state:any) => state.comments.filter((x:any) => x.postId === Props.id))
     console.log(comments)
